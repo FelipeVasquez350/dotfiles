@@ -17,3 +17,4 @@ palette = 14=#61c7e0
 palette = 15=#FFFFFF
 window-width = 120
 window-height = 38
+term = xterm-256color

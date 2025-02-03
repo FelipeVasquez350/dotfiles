@@ -1,3 +1,8 @@
+if [[ -o interactive ]]; then
+  autoload -U colors && colors
+  print "$fg[blue]❯$reset_color $fg[green]fastfetch$reset_color\n"
+  sleep 0.1 && fastfetch 
+fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -58,7 +63,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
-
 
 # Shell integrations
 eval "$(fzf --zsh)"

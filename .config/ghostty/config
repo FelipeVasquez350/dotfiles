@@ -18,3 +18,5 @@ palette = 15=#FFFFFF
 window-width = 120
 window-height = 38
 term = xterm-256color
+shell-integration = zsh
+

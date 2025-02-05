@@ -1,7 +1,7 @@
-if [[ -o interactive ]]; then
+if [[ -o interactive ]]  && [[ "$PWD" == "$HOME" ]]; then
   autoload -U colors && colors
   print "$fg[blue]❯$reset_color $fg[green]fastfetch$reset_color\n"
-  sleep 0.1 && fastfetch 
+  sleep 0.1 && fastfetch
 fi
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

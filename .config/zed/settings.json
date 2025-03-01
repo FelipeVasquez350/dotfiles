@@ -15,7 +15,8 @@
     "version": "2"
   },
   "max_tabs": 4,
-  "theme": "Andromeda",
+  "theme": "Zed Legacy:  Andromeda",
+  "icon_theme": "Material Icon Theme",
   "buffer_font_size": 17.0,
   "ui_font_size": 18
 }

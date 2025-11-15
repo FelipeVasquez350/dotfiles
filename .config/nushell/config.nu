@@ -24,7 +24,7 @@ let external_completer = {|spans|
     $carapace_completer | do $in $spans
 }
 
-# Helper function for fzf-based completion
+# Helper function for fzf-based completion (prints result)
 # Usage: comp "docker"
 def comp [input: string = ""] {
     if ($input | is-empty) {
@@ -69,6 +69,54 @@ def comp [input: string = ""] {
     if not ($selected | is-empty) {
         let value = ($selected | split row ' -- ' | get 0 | str trim)
         print $"($input) ($value)"
+    }
+}
+
+# Helper function for fzf-based completion that inserts into commandline
+# Usage: comp-insert (to be called from keybinding)
+def comp-insert [] {
+    let input = (commandline | str trim)
+
+    if ($input | is-empty) {
+        return
+    }
+
+    let parts = ($input | split row ' ')
+    let cmd = ($parts | get 0)
+
+    let completions = (
+        try {
+            carapace $cmd nushell $input ""
+            | from json
+            | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { [] }
+        } catch {
+            []
+        }
+    )
+
+    if ($completions | is-empty) {
+        return
+    }
+
+    let selected = (
+        $completions
+        | each { |item|
+            let value = $item.value
+            let desc = ($item.description? | default "")
+            if ($desc | is-empty) {
+                $value
+            } else {
+                let padded_value = ($value | fill --width 20 --alignment left)
+                $"($padded_value) -- ($desc)"
+            }
+        }
+        | str join "\n"
+        | fzf --no-preview --height=50% --layout=reverse --info=inline --no-separator --prompt='> '
+    )
+
+    if not ($selected | is-empty) {
+        let value = ($selected | split row ' -- ' | get 0 | str trim)
+        commandline edit -i $" ($value)"
     }
 }
 

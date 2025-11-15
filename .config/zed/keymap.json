@@ -6,18 +6,66 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
-  {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
+    {
+        "context": "Workspace",
+        "bindings": {
+            // "shift shift": "file_finder::Toggle"
+        }
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            "ctrl-k": "editor::ToggleComments",
+            "ctrl-shift-up": "editor::AddSelectionAbove",
+            "ctrl-shift-down": "editor::AddSelectionBelow"
+        }
+    },
+    {
+        "context": "(AgentPanel && acp_thread)",
+        "bindings": {
+            "ctrl-n": null
+        }
+    },
+    {
+        "context": "AgentPanel",
+        "bindings": {
+            "ctrl-alt-n": null
+        }
+    },
+    {
+        "context": "(AgentPanel && text_thread)",
+        "bindings": {
+            "ctrl-n": null
+        }
+    },
+    {
+        "context": "AgentPanel",
+        "bindings": {
+            "ctrl-n": null
+        }
+    },
+    {
+        "context": "AgentDiff",
+        "bindings": {
+            "ctrl-n": null
+        }
+    },
+    {
+        "context": "(Editor && editor_agent_diff)",
+        "bindings": {
+            "ctrl-n": null
+        }
+    },
+    {
+        "context": "AgentDiff",
+        "bindings": {
+            "ctrl-shift-n": null
+        }
+    },
+    {
+        "context": "(Editor && editor_agent_diff)",
+        "bindings": {
+            "ctrl-shift-n": null
+        }
     }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "ctrl-k": "editor::ToggleComments",
-      "ctrl-shift-up": "editor::AddSelectionAbove",
-      "ctrl-shift-down": "editor::AddSelectionBelow"
-    }
-  }
 ]

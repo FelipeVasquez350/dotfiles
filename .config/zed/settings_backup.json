@@ -7,15 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    "git_panel": {
-        "scrollbar": {
-            "show": "auto"
-        }
-    },
-    "project_panel": {
-        "sticky_scroll": true
-    },
-    "autosave": "on_focus_change",
+    "agent_ui_font_size": 19.0,
     "ssh_connections": [
         {
             "host": "Akatosh",
@@ -67,7 +59,7 @@
         "always_allow_tool_actions": true,
         "default_model": {
             "provider": "anthropic",
-            "model": "claude-opus-4-1-thinking-latest"
+            "model": "claude-sonnet-4-latest"
         }
     },
     "file_types": {
@@ -103,13 +95,8 @@
                 }
             ]
         },
-        "Rust": {
-            "formatter": "language_server",
-            "format_on_save": "on"
-        },
-
         "Nix": {
-            "language_servers": ["nixd", "!nil"],
+            "language_servers": ["!nixd", "nil"],
             // "format_on_save": "off",
             "preferred_line_length": 120,
             "formatter": "language_server"
@@ -124,9 +111,7 @@
         },
         "YAML": {
             "tab_size": 2
-        },
-        "JSON": { "tab_size": 2, "allow_rewrap": "anywhere" },
-        "LOG": { "soft_wrap": "editor_width" }
+        }
     },
     "lsp": {
         "clangd": {
@@ -134,7 +119,7 @@
                 "ignore_system_version": true
             }
         },
-        "nixd": {
+        "nil": {
             "enable_lsp_tasks": true,
             "initialization_options": {
                 "formatting": {
@@ -150,11 +135,10 @@
     },
 
     "max_tabs": 8,
-    "theme": "Zed Legacy: Andromeda",
+    "theme": "Zed Legacy:  Andromeda",
     "icon_theme": "Material Icon Theme",
     "buffer_font_size": 18.0,
     "ui_font_size": 20,
     "tab_size": 4,
-    "agent_ui_font_size": 20,
-    "agent_buffer_font_size": 16
+    "agent_font_size": 20
 }

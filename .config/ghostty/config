@@ -20,4 +20,3 @@ window-height = 38
 term = xterm-256color
 shell-integration = detect
 font-size = 11
-command = /etc/profiles/per-user/felipe350/bin/nu

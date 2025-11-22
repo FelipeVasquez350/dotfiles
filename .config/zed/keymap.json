@@ -19,5 +19,53 @@
       "ctrl-shift-up": "editor::AddSelectionAbove",
       "ctrl-shift-down": "editor::AddSelectionBelow"
     }
+  },
+  {
+    "context": "(AgentPanel && acp_thread)",
+    "bindings": {
+      "ctrl-n": null
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-alt-n": null
+    }
+  },
+  {
+    "context": "(AgentPanel && text_thread)",
+    "bindings": {
+      "ctrl-n": null
+    }
+  },
+  {
+    "context": "AgentPanel",
+    "bindings": {
+      "ctrl-n": null
+    }
+  },
+  {
+    "context": "AgentDiff",
+    "bindings": {
+      "ctrl-n": null
+    }
+  },
+  {
+    "context": "(Editor && editor_agent_diff)",
+    "bindings": {
+      "ctrl-n": null
+    }
+  },
+  {
+    "context": "AgentDiff",
+    "bindings": {
+      "ctrl-shift-n": null
+    }
+  },
+  {
+    "context": "(Editor && editor_agent_diff)",
+    "bindings": {
+      "ctrl-shift-n": null
+    }
   }
 ]

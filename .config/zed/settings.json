@@ -4,21 +4,93 @@
 // documentation: https://zed.dev/docs/configuring-zed
 //
 // To see all of Zed's default settings without changing your
-// custom settings, run `zed: open default settings` from the
-// command palette (cmd-shift-p / ctrl-shift-p)
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
 {
-  "assistant": {
-    "default_model": {
-      "provider": "copilot_chat",
-      "model": "claude-3-5-sonnet"
-    },
-    "version": "2"
+  "ssh_connections": [
+    {
+      "host": "Framework13",
+      "args": [],
+      "projects": [
+        {
+          "paths": ["/home/felipe350/dotfiles"]
+        }
+      ]
+    }
+  ],
+  "terminal": {
+    "font_family": "JetBrainsMono Nerd Font"
+  },
+  "git": {
+    "hunk_style": "unstaged_hollow"
+  },
+  "minimum_contrast_for_highlights": 45.0,
+  "toolbar": {
+    "code_actions": false
+  },
+  "buffer_font_weight": 400.0,
+  "features": {
+    "edit_prediction_provider": "copilot"
   },
   "icon_theme": "Material Icon Theme",
-  "max_tabs": 4,
-  "theme": "Zed Legacy:  Andromeda",
+  "theme": "Zed Legacy: Andromeda",
+  "ui_font_size": 16,
+  "buffer_font_size": 16.0,
   "autosave": "on_focus_change",
   "extend_comment_on_newline": false,
-  "buffer_font_size": 16.0,
-  "ui_font_size": 14.0
+  "agent": {
+    "single_file_review": true,
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4-latest"
+    },
+    "always_allow_tool_actions": false,
+    "default_profile": "write",
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-haiku-4.5"
+    }
+  },
+  "languages": {
+    "Markdown": {
+      "show_edit_predictions": false
+    },
+    "PHP": {
+      "formatter": "language_server",
+      "language_servers": ["intelephense", "!phpactor", "..."]
+    },
+    "HTML": {
+      "preferred_line_length": 120
+    },
+    "LOG": { "soft_wrap": "editor_width" },
+    "Nix": {
+      "formatter": {
+        "external": {
+          "command": "nixfmt",
+          "arguments": ["--quiet", "--"]
+        }
+      }
+    },
+    "SQL": {
+      "format_on_save": "off",
+      "formatter": null,
+      "language_servers": ["!sqlls"] // This explicitly disables the SQL language server
+    },
+    "Nu": {
+      "language_servers": ["nu"]
+    },
+    "YAML": {
+      "tab_size": 2
+    }
+  },
+  // https://github.com/zed-extensions/nix
+  "lsp": {
+    "nixd": {
+      "initialization_options": {
+        "flake": { "autoArchive": true }
+      }
+    }
+  },
+  "max_tabs": 4,
+  "soft_wrap": "editor_width"
 }

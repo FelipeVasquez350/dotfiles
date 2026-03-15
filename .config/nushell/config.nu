@@ -1,6 +1,7 @@
 source ~/.config/nushell/starship.nu
 source ~/.config/nushell/zoxide.nu
 source ~/.config/nushell/keybindings.nu
+source ~/.config/nushell/scripts/ssh_clear.nu
 
 let carapace_completer = {|spans: list<string>|
     carapace $spans.0 nushell ...$spans
@@ -122,7 +123,7 @@ def comp-insert [] {
 
 $env.config = {
     show_banner: false
-
+    isolation: true
     color_config: {
         shape_external: { fg: "green" }
     }

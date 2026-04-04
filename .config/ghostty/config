@@ -20,3 +20,4 @@ window-height = 38
 term = xterm-256color
 shell-integration = detect
 font-size = 11
+scrollback-limit = 100000000

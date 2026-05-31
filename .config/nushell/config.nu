@@ -1,6 +1,7 @@
 source ~/.config/nushell/starship.nu
 source ~/.config/nushell/zoxide.nu
 source ~/.config/nushell/keybindings.nu
+source ~/.config/nushell/commands.nu
 
 let carapace_completer = {|spans: list<string>|
     carapace $spans.0 nushell ...$spans
@@ -58,9 +59,9 @@ $env.config = {
 }
 
 # Fastfetch on startup
-if ('ghostty' in ({} | load-env | echo $env.TERM_PROGRAM)) {
-    try {
-        print $"(ansi green)❯(ansi reset) (ansi blue)fastfetch(ansi reset)\n"
-        fastfetch
-    } catch { }
-}
+#if ('ghostty' in ({} | load-env | echo $env.TERM_PROGRAM)) {
+#    try {
+#        print $"(ansi green)❯(ansi reset) (ansi blue)fastfetch(ansi reset)\n"
+#        fastfetch
+#    } catch { }
+#}

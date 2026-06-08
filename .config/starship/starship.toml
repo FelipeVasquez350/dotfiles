@@ -47,13 +47,17 @@ symbol = " "
 symbol = " "
 
 [fossil_branch]
-symbol = " "
+symbol = " "
 
 [gcloud]
 symbol = " "
 
 [git_branch]
-symbol = " "
+symbol = " "
+disabled = true
+
+[git_status]
+disabled = true
 
 [git_commit]
 tag_symbol = '  '
@@ -74,7 +78,7 @@ symbol = " "
 symbol = " "
 
 [hg_branch]
-symbol = " "
+symbol = " "
 
 [hostname]
 ssh_symbol = " "
@@ -167,7 +171,7 @@ symbol = " "
 symbol = " "
 
 [pijul_channel]
-symbol = " "
+symbol = " "
 
 [pixi]
 symbol = "󰏗 "
@@ -198,3 +202,8 @@ symbol = " "
 
 [zig]
 symbol = " "
+
+[custom.jj]
+when = "jj-starship detect"
+shell = ["jj-starship", "--no-git-id", "--jj-symbol", "󱗆 "]
+format = "$output "

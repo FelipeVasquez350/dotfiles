@@ -2,6 +2,7 @@
 $env.XDG_CONFIG_HOME = ($env.HOME | path join ".config")
 $env.XDG_DATA_HOME = ($env.HOME | path join ".local/share")
 $env.XDG_CACHE_HOME = ($env.HOME | path join ".cache")
+$env.XDG_DATA_DIRS = ["/usr/share" "/var/lib/flatpak/exports/share" "/home/v/.local/share/flatpak/exports/share"] | str join ":"
 
 # Editor
 $env.EDITOR = "nvim"

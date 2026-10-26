@@ -3,10 +3,28 @@ source ~/.config/nushell/zoxide.nu
 source ~/.config/nushell/keybindings.nu
 source ~/.config/nushell/commands.nu
 
+# carapace doesn't complete nix flake installables (.#attr); fall back to nix's
+# native NIX_GET_COMPLETIONS engine for the `nix` command.
+let nix_completer = {|spans: list<string>|
+    let idx = (($spans | length) - 1)
+    let out = (with-env { NIX_GET_COMPLETIONS: ($idx | into string) } {
+        ^($spans | first) ...($spans | skip 1) | complete
+    })
+    if $out.exit_code != 0 { return null }
+    $out.stdout | lines | skip 1 | each {|l|
+        let p = ($l | split row "\t")
+        { value: ($p | get 0), description: ($p | get -o 1 | default "") }
+    }
+}
+
 let carapace_completer = {|spans: list<string>|
-    carapace $spans.0 nushell ...$spans
-    | from json
-    | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+    if ($spans | first) == 'nix' {
+        do $nix_completer $spans
+    } else {
+        carapace $spans.0 nushell ...$spans
+        | from json
+        | if ($in | default [] | where value =~ '^-.*ERR$' | is-empty) { $in } else { null }
+    }
 }
 
 let external_completer = {|spans|
@@ -153,7 +171,7 @@ $env.config = {
     }
 }
 
-if ('ghostty' in ({} | load-env | echo $env.TERM_PROGRAM)) {
+if (($env.TERM_PROGRAM? | default '') == 'ghostty') {
     try {
         print $"(ansi green)❯(ansi reset) (ansi blue)fastfetch(ansi reset)\n"
         fastfetch
